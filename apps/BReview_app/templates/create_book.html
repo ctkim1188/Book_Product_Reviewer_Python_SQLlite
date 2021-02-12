@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Create Book</title>
+    <style>
+        *{
+            margin:0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        #container{
+            margin-left: 20px;
+        }
+
+        ul{
+            list-style-type: none;
+        }
+
+        li{
+            margin-left: 20px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <a href="/books">Home</a>
+            <a href="/logout_process">Logout</a>
+        </div>
+        <div id = "add_book_form">
+            <h3>Add a Book Title with a Review:</h3>
+            <form action="/process_book" method= "POST">
+                {% csrf_token %}
+                <label for="">Book: <input type="text" name="title" id=""></label>
+                <br>
+                <label for="">Author:
+                    <ul>
+                        <li>Choose from this list: 
+                            <select name="author_name" id="">
+                                <option value="">author 1</option>
+                                <option value="">author 2</option>
+                            </select>
+                        </li>
+                        <li> <label for="">Add a new author: <input type="text" name="add_author" id=""></label></li>                    
+                    </ul>
+                </label>
+                <div id= "review_box"> <p> Review: </p> <textarea name="review_description" id="" cols="30" rows="5"></textarea></div>
+                <p>Rating: <input type="number" name= "rating_value" min = "0" max = "5"> stars</p>
+                <button>submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

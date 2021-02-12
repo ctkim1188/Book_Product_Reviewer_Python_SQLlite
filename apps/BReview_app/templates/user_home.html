@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dashboard</title>
+
+    <style>
+        *{
+            margin:0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        #container{
+            width: 650px;
+            height: 550px;
+            border: solid black;
+        }
+
+        #header {
+            margin-top: 23px;
+            padding-left: 254px;
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        #userinfo{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            border: solid black;
+            height: 189px;
+            margin-top: 17px;
+            margin-left: 35px;
+        }
+
+        #postedreview{
+            margin-top: 35px;
+            margin-left: 82px;
+        }
+
+        li{
+            margin-left: 45px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <div id="header">
+            <a href="/books">Home</a>
+            <a href="/create_book">Add Book</a>
+            <a href="/create_book">Add Review</a>
+            <a href="/logout_process">Logout</a>
+        </div>
+        <div id="userinfo">
+            {% for x in page_owner %}
+                <h4>User: {{x.username}}</h4>
+                <h4>Name: {{x.first_name}} {{x.last_name}}</h4>
+                <h4>Email: {{x.email}}</h4>
+                <h4>Total Reviews: for loop with a count</h4>
+            {% endfor %}
+        </div>
+        <div id="postedreview">
+            <p>Posted Reviews on the following books:</p>
+                <ul>
+                    <li>for loop here with user id to reviews</li>
+                </ul>
+        </div>
+    </div>
+</body>
+</html>
